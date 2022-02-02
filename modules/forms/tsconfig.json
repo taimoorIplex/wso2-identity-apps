@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "rootDir": "src",
+        "outDir": "dist/src",
+        "declaration": true,
+        "declarationDir": "dist/typings"
+    },
+    "extends": "../../configs/common.tsconfig.json",
+    "exclude": ["src/tests","test-configs"]
+}

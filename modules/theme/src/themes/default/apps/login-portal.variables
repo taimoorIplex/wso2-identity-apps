@@ -1,0 +1,13 @@
+/*******************************
+     Login Portal Variables
+*******************************/
+
+/*-----------------------------
+     Login Portals Commons
+------------------------------*/
+
+@loginPortalBackgroundColor: @white;
+@loginPortalProductLogoHeight: 22px;
+@loginPortalLoginCardBorderRadius: @defaultBorderRadius;
+@loginPortalProductTitleMargin: 2em 0 1em;
+@loginPortalProductTitleInHeaderMargin: 5px 0;

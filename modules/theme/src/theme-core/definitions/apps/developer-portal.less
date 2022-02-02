@@ -1,0 +1,719 @@
+/*!
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *
+ */
+
+ @type    : "app";
+ @element : "developer-portal";
+ 
+ @import (multiple) '../../theme.less';
+ .loadVariables();
+
+/*-------------------------------
+            Pages
+--------------------------------*/
+
+.developer-portal.page {
+    &.overview-page {
+        .jumbotron {
+            padding: @overviewPageJumbotronPadding;
+
+            &.with-animated-background {
+                -webkit-transition: @overviewPageJumbotronAnimatedBackgroundTransition;
+                -moz-transition:  @overviewPageJumbotronAnimatedBackgroundTransition;
+                -o-transition:  @overviewPageJumbotronAnimatedBackgroundTransition;
+                transition:  @overviewPageJumbotronAnimatedBackgroundTransition;
+            }
+
+            &:hover {
+                &.with-animated-background {
+                    background-position-x: @overviewPageJumbotronAnimatedBackgroundHoverXPositionOffset;
+                    background-position-y: @overviewPageJumbotronAnimatedBackgroundHoverYPositionOffset;
+                }
+            }
+        }
+        .technology-showcase {
+            .labeled-card-wrapper {
+                &:not(:last-child) {
+                    margin-right: @overviewPageTechnologyShowcaseCardsMarginRight;
+                }
+
+                .labeled-card {
+                    .card-image-container {
+                        .theme-icon {
+                            svg.icon .path {
+                                transition: fill 0.5s ease;
+                            }
+                        }
+                    }
+                }
+
+                &:not(:hover) {
+                    .labeled-card {
+                        .card-image-container {
+                            .theme-icon {
+                                svg.icon .path {
+                                    fill: @iconDefaultBgColor;
+
+                                    &.stroke {
+                                        stroke: @iconDefaultBgColor;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .card-label {
+                        color: @lightTextColor;
+                    }
+                }
+                
+                &:hover {
+                    .card-label {
+                        color: darken(@lightTextColor, 40);
+                    }
+                }
+            }
+        }
+        .quick-links {
+            .ui.card {
+                max-width: @overviewPageQuickLinksCardMaxWidth;
+
+                .theme-icon {
+                    padding-top: 2em;
+                }
+                .content {
+                    border-top: none;
+                    padding: 1em 2em 1.5em 2em;
+                    
+                    .header {
+                        font-size: 1.1em;
+                    }
+                    .description {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+ /*****************************************
+             Sign on methods
+ *****************************************/
+ 
+ .sign-on-methods-tab-content {
+     .authentication-flow-section {
+         .main-content {
+             transition: width ease 500ms;
+             width: 100%;
+         }
+ 
+         .authenticators-panel {
+             display: inline-block;
+             z-index: 9;
+ 
+             .drag-handle {
+                 cursor: grab;
+ 
+                 &:active, &:focus {
+                     cursor: grabbing;
+                 }
+             }
+ 
+             .authenticators-section {
+                 .ui.accordion {
+                     .title {
+                         font-size: 0.9em;
+ 
+                         .caret-icon {
+                             transition: transform .1s ease-in-out;
+                         }
+                         &.active {
+                             .caret-icon {
+                                 transform: rotate(90deg);
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+ 
+         .authentication-steps-section {
+             display: @signOnMethodsAuthStepSectionDisplay;
+             overflow: @signOnMethodsAuthStepSectionOverflow;
+             max-height: @signOnMethodsAuthStepSectionMaxHeight;
+             border: @signOnMethodsAuthStepSectionBorder;
+             padding: @signOnMethodsAuthStepSectionPadding;
+             max-width: @signOnMethodsAuthStepSectionMaxWidth;
+
+             .authentication-step-container {
+                 .step-header {
+                     display: inline-block;
+                 }
+                 .delete-button {
+                     display: inline-block;
+                     float: right;
+                     color: @nobel;
+ 
+                     &:hover {
+                         color: @black;
+                         cursor: pointer;
+                     }
+                 }
+                 .authentication-step {
+                     background-color: @whiteSmoke;
+                     padding: 15px;
+                     border-radius: @defaultBorderRadius;
+                     display: @signOnMethodsAuthStepDisplay;
+                     width: @signOnMethodsAuthStepWidth;
+                     overflow: @signOnMethodsAuthStepOverflow;
+                     flex-direction: @signOnMethodsAuthStepFlexDirection;
+                     min-height: @signOnMethodsAuthStepMinHeight;
+                     max-height: @signOnMethodsAuthStepMinHeight;
+                     flex-wrap: wrap;
+                 }
+ 
+                 .checkboxes {
+                     margin: 15px 0;
+ 
+                     .checkbox {
+                         &:not(:last-child) {
+                             margin-right: 20px;
+                         }
+                     }
+                 }
+             }
+
+             .trail {
+                 &:after {
+                     content: '';
+                     margin-top: 0;
+                     margin-left: 10px;
+                     width: 50px;
+                     z-index: 9;
+                     height: 0;
+                     border: @signOnMethodsAuthStepBorder;
+                 }
+             }
+ 
+             .add-step-button {
+                 padding-left: 0;
+             }
+
+             .flow-button-container {
+                 text-align: center;
+                 align-items: center;
+                 justify-content: center;
+                 display: flex;
+
+                 &.with-trail {
+                     &:after {
+                         content: '';
+                         margin-top: 0;
+                         margin-left: 10px;
+                         width: 47px;
+                         z-index: 9999;
+                         height: 0;
+                         border: @signOnMethodsAuthStepBorder;
+                     }
+                 }
+
+                 &.with-margin {
+                     margin-right: @signOnMethodsAuthStepButtonMarginRight;
+                 }
+             }
+         }
+         &.flex {
+             display: flex;
+ 
+             .main-content {
+                 padding-right: 2em;
+             }
+         }
+     }
+ 
+     /** 
+        TODO: This styling is used by the SQL editor component as well.
+        This should be refactored into a separate class.
+     **/
+     .adaptive-scripts-section {
+         .script-editor-section {
+             border: @defaultBorderWidth solid @defaultBorderColor;
+             border-radius: @defaultBorderRadius;
+ 
+             .script-editor-container {
+                 transition: width ease-in-out 0.2s;
+ 
+                 .code-editor-wrapper {
+                     padding: 0;
+                     border: none;
+                 }
+ 
+                 .action-panel {
+                     border: none;
+ 
+                     .action {
+                         padding: 8px;
+ 
+                         i {
+                             margin-right: 0;
+                         }
+                     }
+                 }
+             }
+
+             .reset-button {
+                 cursor: pointer;
+
+                 &:hover {
+                     color: @primaryColor;
+                 }
+             }
+
+             .script-templates-panel {
+                 padding: 1em;
+                 border: none;
+                 box-shadow: none !important;
+ 
+                 &.left {
+                    ~.pusher {
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                 }
+
+                 .template-category-menu {
+                     margin-right: 0;
+ 
+                     > .item {
+                         padding: 0;
+ 
+                         .category-name {
+                             background: @white;
+                             padding: 0.9em 1em;
+                             border-radius: @defaultBorderRadius;
+                             border-left: 3px solid transparent;
+ 
+                             &.active {
+                                 box-shadow: 0 2px 3px 0 @darkGray;
+                                 border-left: 3px solid @primaryColor;
+                             }
+ 
+                             .caret-icon {
+                                 transition: transform .1s ease-in-out;
+                                 float: right;
+                             }
+                             &.active {
+                                 .caret-icon {
+                                     transform: rotate(90deg);
+                                 }
+                             }
+                         }
+ 
+                         .template-list {
+                             > .item {
+                                 background: darken(@white, 1);
+                                 margin: 0;
+                                 text-overflow: ellipsis;
+                                 white-space: nowrap;
+                                 overflow: hidden;
+                                 color: lighten(@textColor, 20);
+                                 font-size: 0.9em;
+ 
+                                 &:not(:last-child) {
+                                     border-bottom: 1px solid lighten(@defaultBorderColor, 30);
+                                     border-bottom-right-radius: 0;
+                                     border-bottom-left-radius: 0;
+                                 }
+ 
+                                 &:not(:first-child) {
+                                     border-top-right-radius: 0;
+                                     border-top-left-radius: 0;
+                                 }
+ 
+                                 .template-name {
+                                     display: inline-block;
+                                     width: 120px;
+                                     text-overflow: ellipsis;
+                                     white-space: nowrap;
+                                     overflow: hidden;
+                                 }
+ 
+                                 .add-button {
+                                     cursor: pointer;
+ 
+                                     &:hover {
+                                         color: @primaryColor;
+                                     }
+                                 }
+
+                                 &.active {
+                                    border-left: 2px solid @primaryColor;
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+     }
+ }
+ 
+/*****************************************
+        Email Template
+*****************************************/
+.email-code-editor {
+    .ui.menu {
+        border-bottom: 1px solid #ccc !important;
+        margin-bottom: 0px;
+
+        .item {
+            background-color: #F8F8F8 !important;
+            border-top: 1px solid #ccc !important;
+            border-right: 1px solid #ccc !important;
+            border-bottom-color: #ccc !important;
+
+            &:first-child {
+                border-left: 1px solid #ccc;
+            }
+        }
+
+        .active {
+            border-top: 1px solid #ccc !important;
+            border-right: 1px solid #ccc !important;
+            border-bottom: 2px solid #fff !important;
+            background-color: #fff !important;
+
+            &:first-child {
+                border-left: 1px solid #ccc !important;
+            }
+        }
+    }
+
+    .ui.segment {
+        border: 1px solid #ccc !important;
+        border-top: none !important;
+        border-radius: 0px;
+        margin-top: 0px;
+    }
+
+    .CodeMirror {
+        height: 60vh;
+    }
+    
+    .render-view {
+        overflow: hidden;
+        padding-top: 56.25%;
+        position: relative;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.email-template-flag {
+    float: left !important;
+    margin-top: 3px !important;
+    margin-right: 10px !important;
+}
+
+.template-view-content {
+    padding: 0 !important;
+
+    .email-code-editor {
+        height: 100%;
+
+        .render-view {
+            height: 100%;
+        }
+    }
+}
+
+.mail-signature {
+    .render-view {
+        padding-top: 36.25%;
+    }
+
+    .CodeMirror {
+        height: 40vh;
+    }
+}
+ 
+ .empty-placeholder-center {
+     position: relative;
+     top: 50%;
+     -webkit-transform: translateY(-50%);
+     -ms-transform: translateY(-50%);
+     transform: translateY(-50%);
+ }
+ 
+ .claim-scrolling-list {
+     overflow-y: auto;
+     height: 250px;
+     overflow-x: hidden;
+     padding: 10px;
+ 
+     &.selected {
+         background-color: #f4f7f9;
+         height: 304px;
+     }
+ }
+ 
+ #claim-scroll::-webkit-scrollbar {
+     -webkit-appearance: none;
+     width: 2px;
+     height: 1px;
+ }
+
+ .local-dialect-direct {
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #f3f3f3;
+    }
+ }
+ 
+ .loadUIOverrides();
+
+.transfer-list-sub-content {
+  color: @darkGray;
+}
+
+/*****************************************
+   IdP Outbound  Provisioning  Roles
+*****************************************/
+.outbound-provisioning-roles {
+    &.role-select-dropdown {
+        .field {
+            display: inline-block;
+            width: 93%;
+            margin-right: 8px;
+        }
+    }
+}
+
+.danger-zone {
+    &.toggle-switch {
+        float: right;
+    }
+}
+
+.feedback-category {
+    padding: 1em 0 2em 0 !important;
+
+    .row .column:first-child {
+        padding-right: 5px !important;
+    }
+
+    .row .column:nth-child(2) {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+
+    .row .column:last-child {
+        padding-left: 5px !important;
+    }
+
+    input:checked + label {
+        background: #f7f7f7;
+    }
+
+    input {
+        display: none;
+    }
+
+    label:not(:first-child) {
+        padding: 1em;
+        display: block;
+        text-align: center;
+        border: 1px solid #3333;
+        border-radius: 5px;
+    }
+}
+
+/*****************************************
+   Adaptive Script Template Description
+*****************************************/
+.stepper {
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    grid-template-rows: 25px 1fr;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+
+    .step-number {
+        border-radius: 50%;
+        background-color: @primaryColor;
+        color: @white;
+        text-align: center;
+        padding: 5px;
+        height: 25px;
+        width: 25px;
+        font-size: 0.8em;
+    }
+
+    .step-text {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-row-end: 3;
+        padding-top: 5px;
+    }
+
+    .step-connector {
+        height: 100%;
+        min-height: 25px;
+        display: flex;
+        justify-content: center;
+
+        .step-line {
+            height: 100%;
+            width: 1px;
+            background-color: @paleGray;
+        }
+    }
+}
+
+/*****************************************
+    Remote Repository Configuration
+*****************************************/
+.deployment-status {
+    margin: 0 1em !important;
+}
+
+/*****************************************
+    Role Management View
+*****************************************/
+.tree-arrow-wrap {
+    cursor: pointer;
+    float: left;
+    margin-left: -3px;
+    margin-right: 5px;
+    
+    .tree-arrow {
+        cursor: pointer;
+        display: inline-block;
+        height: 18px;
+        position: relative;
+        top: 4px;
+        width: 18px;
+
+        span {
+            background-color: @treeArrowBackgroundColor;
+            display: inline-block;
+            height: 0.1rem;
+            position: absolute;
+            top: 0.5rem;
+            width: 0.75rem;
+
+            &:first-of-type {
+                -webkit-transform: rotate(45deg);
+                left: 0;
+                transform: rotate(45deg);
+            }
+
+            &:last-of-type {
+                -webkit-transform: rotate(-45deg);
+                right: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .tree-arrow.active {
+        span {
+
+            &:first-of-type {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                left: 2px;
+                top: 1px;
+            }
+
+            &:last-of-type {
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+                left: 3px;
+                top: 9px;
+            }
+        }
+    }
+
+}
+
+.rc-tree-switcher{
+    &.rc-tree-switcher_open, &.rc-tree-switcher_close {
+        background: none !important;
+    }
+}
+
+/*-------------------------------
+      Connector Sections
+--------------------------------*/
+
+.connector-section-with-image-bg {
+    height: @connectorSectionWithImageBgHeight;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: right !important;
+    background-origin: unset !important;
+}
+
+/*-------------------------------
+      Item List Selection
+--------------------------------*/
+
+.item-selection, .transfer-list.one-column-selection {
+
+    .transfer-segment {
+        overflow: hidden;
+
+        .ui.checkbox {
+            &.all-select {
+                margin: 20px 10px 0 0;
+                border: @defaultBorderWidth solid @defaultBorderColor;
+                background-color: @pageBackground;
+                padding: 10px;
+                border-radius: 3px;
+                font-weight: 500;
+            }
+        }
+
+        .transfer-list-segment {
+            max-height: 150px !important;
+            overflow: auto;
+
+            thead tr:first-child {
+
+                th {
+                    position: sticky;
+                    position: -webkit-sticky;
+                    top: 0;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}

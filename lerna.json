@@ -1,0 +1,9 @@
+{
+    "packages": [
+        "apps/*",
+        "components/theme",
+        "modules/*",
+        "tests"
+    ],
+    "version": "1.2.9"
+}

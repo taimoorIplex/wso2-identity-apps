@@ -1,0 +1,64 @@
+{
+    "name": "@wso2is/core",
+    "version": "1.2.9",
+    "description": "Commonly used configs, schemas, utilities and low level services for WSO2 Identity Server frontend apps",
+    "keywords": [
+        "WSO2",
+        "WSO2 IS",
+        "WSO2 Identity Server",
+        "WSO2 Identity Apps",
+        "core",
+        "common",
+        "utils"
+    ],
+    "main": "dist/src/index.js",
+    "types": "dist/src/index.d.ts",
+    "scripts": {
+        "prebuild": "npm run clean",
+        "build": "npm run compile",
+        "clean": "rimraf ./dist",
+        "compile": "npx run-script-os",
+        "compile:win32": "..\\..\\node_modules\\.bin\\tsc -p tsconfig.json",
+        "compile:default": "../../node_modules/.bin/tsc -p tsconfig.json",
+        "lint": "eslint --ext .js,.ts .",
+        "test": "npm run jest --passWithNoTests",
+        "jest": "npx run-script-os",
+        "jest:win32": ".\\node_modules\\.bin\\jest",
+        "jest:default": "./node_modules/.bin/jest"
+    },
+    "author": "WSO2",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@braintree/sanitize-url": "^5.0.0",
+        "@types/jest": "^26.0.14",
+        "jest": "^26.4.2",
+        "ts-jest": "^26.4.0"
+    },
+    "devDependencies": {
+        "rimraf": "^3.0.2",
+        "run-script-os": "^1.0.7"
+    },
+    "peerDependencies": {
+        "@types/crypto-js": "*",
+        "@types/history": "*",
+        "@types/js-yaml": "*",
+        "@types/lodash": "*",
+        "@types/node": "*",
+        "@types/node-forge": "*",
+        "@types/react": "*",
+        "@types/react-notification-system": "*",
+        "@types/ua-parser-js": "*",
+        "axios": "*",
+        "crypto-js": "*",
+        "history": "*",
+        "js-yaml": "*",
+        "lodash": "*",
+        "moment": "*",
+        "node-forge": "*",
+        "react": "*",
+        "react-notification-system": "*",
+        "tslint": "*",
+        "typescript": "*",
+        "ua-parser-js": "*"
+    }
+}

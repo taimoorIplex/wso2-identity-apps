@@ -1,0 +1,15 @@
+{
+    "id": "custom-application",
+    "name": "Custom Application",
+    "description": "Applications that uses manual configurations.",
+    "image": "customApp",
+    "authenticationProtocol": "",
+    "category": "DEFAULT",
+    "displayOrder": -1,
+    "self": "",
+    "subTemplates": [],
+    "subTemplatesSectionTitle": "",
+    "templateGroup": "",
+    "types": [],
+    "application": null
+}

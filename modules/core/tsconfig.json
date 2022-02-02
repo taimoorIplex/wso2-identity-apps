@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "rootDir": "src",
+        "outDir": "dist/src",
+        "declaration": true
+    },
+    "extends": "../../configs/common.tsconfig.json"
+}

@@ -1,0 +1,14 @@
+{
+    "category": "DEFAULT",
+    "description": "Applications developed to target native desktops.",
+    "enabled": true,
+    "id": "desktop",
+    "displayOrder": 3,
+    "image": "windowsNative",
+    "name": "Desktop Application",
+    "subTemplatesSectionTitle": "Technology",
+    "types": [
+        "windows",
+        "macos"
+    ]
+}
